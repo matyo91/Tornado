@@ -20,7 +20,7 @@
             <directory>tests</directory>
         </testsuite>
         <testsuite name="Tornado Examples">
-            <directory>examples/tests</directory>
+            <directory>examples/Tests</directory>
         </testsuite>
     </testsuites>
 
