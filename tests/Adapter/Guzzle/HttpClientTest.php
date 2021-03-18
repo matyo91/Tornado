@@ -9,6 +9,9 @@ use M6Web\Tornado\EventLoop;
 
 class HttpClientTest extends \M6WebTest\Tornado\HttpClientTest
 {
+    /**
+     * @param array<array|\Exception> $responsesOrExceptions
+     */
     protected function createHttpClient(EventLoop $eventLoop, array $responsesOrExceptions): \M6Web\Tornado\HttpClient
     {
         return new \M6Web\Tornado\Adapter\Guzzle\HttpClient(
@@ -20,7 +23,7 @@ class HttpClientTest extends \M6WebTest\Tornado\HttpClientTest
     /**
      * @dataProvider eventLoopProvider
      */
-    public function testWrapperIsTicked(EventLoop $eventLoop)
+    public function testWrapperIsTicked(EventLoop $eventLoop): void
     {
         $httpClient = new \M6Web\Tornado\Adapter\Guzzle\HttpClient(
             $eventLoop,
@@ -35,7 +38,7 @@ class HttpClientTest extends \M6WebTest\Tornado\HttpClientTest
     /**
      * @dataProvider eventLoopProvider
      */
-    public function testRequestExceptionsAreSuccessful(EventLoop $eventLoop)
+    public function testRequestExceptionsAreSuccessful(EventLoop $eventLoop): void
     {
         $request = new Request('GET', 'http://www.example.com');
         $expectedResponse = new Response(500, [], 'An error occurred');
